@@ -23,6 +23,50 @@ python calculate_uncertainty.py \
   --out_json=<opt: path_to_output_json_file_for_results>
 ```
 
+OpenAI predictions (JSONL outputs):
+Run LLM inference against a dataset JSON file to produce per‑question outputs and logprobs.
+Inputs are JSON arrays under `datasets/`. Outputs are JSONL under `outputs/` when using
+`scripts_closed_models/python/launch_experiment.py`, or wherever you pass `--output_path`
+when calling `run_experiment.py` directly.
+```
+cat > env/.env <<EOF
+OPENAI_API_KEY=...
+OPENAI_API_KEY_2=...
+EOF
+
+python run_experiment.py \
+  --model gpt-4o \
+  --backend openai \
+  --dataset_path datasets/amboss_alldiff_train_randabst.json \
+  --prompt_method shared \
+  --output_path outputs/amboss_gpt4o.jsonl
+```
+
+Alternatively, run the prebuilt script (uses relative paths):
+```
+bash scripts_closed_models/bash/run_experiment_openai_randabst.sh
+```
+The `scripts_closed_models/python/launch_experiment.py` flow loads keys from `env/.env`
+and writes outputs under `outputs/<dataset>/<zeroshot|fewshot>/<model>/`.
+
+Generate perturbed datasets:
+Create perturbed versions of existing datasets (e.g., to introduce abstention options).
+Inputs are JSON arrays under `datasets/` and outputs are written to the path you pass
+via `--perturbed_dataset` (typically under `datasets/perturbed_*.json`).
+```
+python quantify_uncertainty/perturbed_dataset_scripts/create_perturbed_dataset.py \
+  --model gpt-4.1-mini \
+  --dataset datasets/amboss_alldiff_train_noabst.json \
+  --perturbed_dataset datasets/perturbed_amboss_alldiff_train_noabst.json \
+  --model_key OPENAI_API_KEY
+```
+
+Batch perturbed dataset generation:
+```
+export OPENAI_API_KEY=...
+bash scripts_closed_models/bash/run_perturbed_dataset.sh
+```
+
 Shield: [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 
 This work is licensed under a

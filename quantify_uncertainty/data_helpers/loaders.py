@@ -16,6 +16,12 @@ def get_raw_data(raw_data_file: str,
     return train_test_split(raw_data, train_size=cal_ratio, random_state=42)
 
 
+def load_all_data(raw_data_dir: str, data_name: str):
+    path = os.path.join(raw_data_dir, f"{data_name}.json")
+    with open(path, "r") as f:
+        return json.load(f)
+
+
 def get_logits_data(logits_pkl_path: str,
                     cal_ratio: float,
                     prompt_methods: List[str],
