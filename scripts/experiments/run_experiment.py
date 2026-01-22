@@ -155,8 +155,8 @@ def main():
         "icl_method": "icl0", 
         "cal_ratio": 0.3, 
         "alpha": 0.1,
-        "generate_logits_script": os.path.join(PROJECT_ROOT, "med-llm-uncertainty-benchmark/generate_logits.py"),
-        "calculate_uncertainty_script": os.path.join(PROJECT_ROOT, "med-llm-uncertainty-benchmark/calculate_uncertainty.py"),
+        "generate_logits_script": os.path.join(PROJECT_ROOT, "MedAbstain/generate_logits.py"),
+        "calculate_uncertainty_script": os.path.join(PROJECT_ROOT, "MedAbstain/calculate_uncertainty.py"),
         "few_shot_pool": args.few_shot_pool,
         "embedding_model": args.embedding_model
     }

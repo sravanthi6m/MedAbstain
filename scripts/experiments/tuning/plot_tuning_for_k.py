@@ -5,7 +5,7 @@ import os
 
 def plot_tuning_curves():
     input_csv = 'fs_tuning_results.csv'
-    output_dir = '/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/med-llm-uncertainty-benchmark/figures'
+    output_dir = '/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/MedAbstain/figures'
     os.makedirs(output_dir, exist_ok=True)
 
     try:

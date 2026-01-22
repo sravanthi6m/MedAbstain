@@ -21,9 +21,9 @@ export SLURM_LOG_FILE="${LOG_DIR}/${SLURM_JOB_NAME}-${SLURM_JOB_ID}-${DATE_TAG}.
 source /home/smachcha_umass_edu/cp_quant/bin/activate
 
 PROJECT_ROOT="/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/"
-LAUNCHER_SCRIPT="${PROJECT_ROOT}/med-llm-uncertainty-benchmark/scripts/experiments/run_experiment.py"
+LAUNCHER_SCRIPT="${PROJECT_ROOT}/MedAbstain/scripts/experiments/run_experiment.py"
 
-ENV_FILE="${PROJECT_ROOT}/med-llm-uncertainty-benchmark/env/.env"
+ENV_FILE="${PROJECT_ROOT}/MedAbstain/env/.env"
 if [ -f "$ENV_FILE" ]; then
     echo "Loading environment variables from $ENV_FILE"
     export $(cat "$ENV_FILE" | xargs)
