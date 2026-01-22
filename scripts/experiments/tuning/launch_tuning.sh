@@ -4,9 +4,14 @@
 # Script for hyperparameter tuning jobs to find the optimal k values.
 # =================================================================================
 
+set -a
+source ./env/.env
+set +a
 
-DATA_DIR="/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/data"
-LOG_DIR="/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/outputs/slurm_master_tuning"
+echo "Root dir: ${PROJECT_ROOT:?Error: PROJECT_ROOT not found in ./env/.env}"
+
+DATA_DIR="${PROJECT_ROOT}data"
+LOG_DIR="${PROJECT_ROOT}outputs/slurm_master_tuning"
 mkdir -p "$LOG_DIR"
 
 DATE_TAG=$(date +"%Y%m%d-%H%M")

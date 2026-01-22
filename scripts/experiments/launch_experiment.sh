@@ -5,8 +5,14 @@
 # Requests resources and submits a separate Slurm job for each run
 # =================================================================================
 
-DATA_DIR="/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/data"
-LOG_DIR="/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/outputs/slurm_master_all_fs"
+set -a
+source ./env/.env
+set +a
+
+echo "Running benchmark in: ${PROJECT_ROOT:?Error: PROJECT_ROOT not found in ./env/.env}"
+
+DATA_DIR="${PROJECT_ROOT}data"
+LOG_DIR="${PROJECT_ROOT}outputs/slurm_master_all_fs"
 mkdir -p "$LOG_DIR"
 
 DATE_TAG=$(date +"%Y%m%d-%H%M")

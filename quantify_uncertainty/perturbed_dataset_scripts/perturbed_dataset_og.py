@@ -1,18 +1,27 @@
 import requests
 import json
 import warnings
-from datasets import load_from_disk
-import csv
-import argparse
-import pandas as pd
-from pathlib import Path
 import re
+import argparse
+import os
+import pandas as pd
+
+from pathlib import Path
+from dotenv import load_dotenv
+
 
 warnings.filterwarnings("ignore")
 
+load_dotenv("./env/.env") 
+try:
+    api_key = os.environ["OPENAI_API_KEY"]
+except KeyError:
+    raise ValueError("OPENAI_API_KEY not found in ./env/.env")
 
-api_key = "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"
-org_key = "org-ewbrRzXdrHxv7hV0WyCFzGdD"
+try:
+    org_key = os.environ["OPENAI_ORG_ID"]
+except KeyError:
+    raise ValueError("OPENAI_ORG_ID not found in ./env/.env")
 
 
 def _parse_arguments():

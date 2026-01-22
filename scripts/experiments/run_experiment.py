@@ -3,6 +3,14 @@ import subprocess
 import argparse
 import pandas as pd
 from datetime import datetime
+from dotenv import load_dotenv
+
+load_dotenv("./env/.env") 
+
+try:
+    PROJECT_ROOT = os.environ["PROJECT_ROOT"]
+except KeyError:
+    raise ValueError("PROJECT_ROOT not found in ./env/.env")
 
 def log_status(tracker_file, config, status, stdout="", stderr=""):
     """
@@ -139,7 +147,6 @@ def main():
 
     args = parser.parse_args()
     
-    PROJECT_ROOT = "/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/"
     TRACKER_FILE = os.path.join(PROJECT_ROOT, args.tracker_file)
     
     config = {

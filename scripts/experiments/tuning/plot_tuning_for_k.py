@@ -2,10 +2,18 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
+from dotenv import load_dotenv
+
+load_dotenv("./env/.env") 
+
+try:
+    PROJECT_ROOT = os.environ["PROJECT_ROOT"]
+except KeyError:
+    raise ValueError("PROJECT_ROOT not found in ./env/.env")
 
 def plot_tuning_curves():
     input_csv = 'fs_tuning_results.csv'
-    output_dir = '/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/MedAbstain/figures'
+    output_dir = f'{PROJECT_ROOT}MedAbstain/figures'
     os.makedirs(output_dir, exist_ok=True)
 
     try:

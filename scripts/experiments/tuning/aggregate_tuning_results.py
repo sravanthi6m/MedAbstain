@@ -2,9 +2,17 @@ import os
 import json
 import re
 import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv("./env/.env") 
+
+try:
+    PROJECT_ROOT = os.environ["PROJECT_ROOT"]
+except KeyError:
+    raise ValueError("PROJECT_ROOT not found in ./env/.env")
 
 def aggregate_tuning_results():
-    results_dir = '/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/uncertainty_fs_op/'
+    results_dir = f'{PROJECT_ROOT}uncertainty_fs_op/'
     output_csv = 'fs_tuning_results.csv'
     
     all_results = []

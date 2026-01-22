@@ -7,8 +7,13 @@
 #SBATCH -t 1-00:00:00
 
 ##############
+set -a
+source ./env/.env
+set +a
 
-LOG_DIR="/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/outputs/slurm_master_tuning"
+echo "Running in: ${PROJECT_ROOT:?Error: PROJECT_ROOT not found in ./env/.env}"
+
+LOG_DIR="${PROJECT_ROOT}/outputs/slurm_master_tuning"
 mkdir -p "$LOG_DIR"
 DATE_TAG=$(date +"%Y%m%d-%H%M")
 #SBATCH -o ${LOG_DIR}/%x-%j-${DATE_TAG}.out
@@ -20,7 +25,6 @@ export SLURM_LOG_FILE="${LOG_DIR}/${SLURM_JOB_NAME}-${SLURM_JOB_ID}-${DATE_TAG}.
 
 source /home/smachcha_umass_edu/cp_quant/bin/activate
 
-PROJECT_ROOT="/project/pi_hongyu_umass_edu/zonghai/abstention/sravanthi/benchmarking/"
 LAUNCHER_SCRIPT="${PROJECT_ROOT}/MedAbstain/scripts/experiments/run_experiment.py"
 
 ENV_FILE="${PROJECT_ROOT}/MedAbstain/env/.env"
