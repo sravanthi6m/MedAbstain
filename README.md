@@ -5,9 +5,9 @@
 [![Conference](https://img.shields.io/badge/EACL-2026-red)](https://2026.eacl.org/)
 [![License: CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 
-Official codebase for **"Knowing When to Abstain: Medical LLMs Under Clinical Uncertainty" (EACL 2026)**.
+Official codebase for [**"Knowing When to Abstain: Medical LLMs Under Clinical Uncertainty"**](https://arxiv.org/abs/2601.12471) **(EACL 2026)**
 
-**MedAbstain** is a unified benchmark and evaluation framework that assesses whether medical LLMs can recognize their own uncertainty and abstain accordingly, uses **Conformal Prediction** (via Set Sizes). 
+**MedAbstain** is a unified benchmark and evaluation framework that assesses whether medical LLMs can recognize their own uncertainty and abstain accordingly, using **Conformal Prediction** (via Set Sizes). 
 
 ![Evaluation Pipeline](./figures/overview.jpg)
 Overview of MedAbstain pipeline (above), showing the four question variants we use in our experiments: NA (Original), A (Abstention option), NAP (Adversarial Perturbations), and AP (Abstention + Perturbation).
@@ -36,7 +36,7 @@ pip install -r requirements.txt
 ```
 
 ### 4. Environment Configuration
-Create/edit local environment file `./env/.env` to store sensitive keys and local paths.
+Create/edit local environment file `./env/.env` to store api keys and local paths.
 ```bash
 mkdir -p env
 touch env/.env
